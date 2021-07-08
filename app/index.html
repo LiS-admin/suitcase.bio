@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/modal.css">
+<link rel="manifest" href="manifest.json">
+<script >
+
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("service-worker.js", { scope: './' })
+            .then(() => console.log("registered service worker!"));
+    }
+
+
+</script>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<body>
+    <div class="content">
+        <h1>
+            LIS app
+        </h1>
+        
+        <br />
+        
+            <select class="options" name="color" id="color">
+                <option class="options" value="grey">Neutral (Cells, water turbidity, etc)</option>
+                <option  class="options" value="blue">Blue (Any dye) - Beta</option>
+                <option  value="green">Green (Any dye) - Beta</option>
+                <option  value="yellow">Yellow (Any dye) - Beta</option>
+                <option  value="red">Red (Any dye) - Beta</option>
+            </select>
+        
+
+        <br><br><br>
+
+        <label class="custom-file-upload">
+            <input id="fileUpload" type="file" />
+            Acquire
+        </label>
+
+        <div class="canvasdiv" id="divc">
+            <canvas class="piccanvas" id="canvas"></canvas>
+        </div>
+
+
+        <span style="font-size: 4em;" class="myButton" name="blank" id="blank" onclick="blank()">Blank</span>&nbsp;
+        <span style="font-size: 4em;" class="myButton" name="measure" id="measure" onclick="measure()">Measure</span>&nbsp;
+        <span style="font-size: 4em;" class="myButton" name="download" id="download" onclick="dload()">&#9660;</span> &nbsp;
+        <span style="font-size: 4em;" class="myButton" id="settings">&nbsp;&#9881;&nbsp;</span>
+
+
+    </div>
+
+    <!-- Trigger/Open The Modal
+    <button id="myBtn">Open Modal</button>-->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>WebApp for measuring concentrations based on the Beer-Lambert law</p>
+            <p>Typical dynamic range of 2 orders of magnitude</p>
+            <label for="xtop">X frame pos</label>
+            <input class=param type="text" id="xtop" name="xtop" value=1200><br><br>
+            <label for="ytop">Y frame pos</label>
+            <input class=param   type="text" id="ytop" name="ytop" value=1700><br><br>
+            <label for="ytop">Max staturated pixels</label>
+            <input class=param  type="text" id="maxsat" name="maxsat" value=3000><br><br>
+
+            <span style="font-size: 1.5em; float:right;padding:.1em" class="myButton" id="store">Store settings</span>
+            <br>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+
+<script src="js/marvinj-1.0.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/actions.js"></script>
+
+</html>
+
